@@ -1,6 +1,14 @@
 #include "crypto.h"
 
+/*
+Because of the following warning: warning: ‘AES_set_encrypt_key’ is deprecated: Since OpenSSL 3.0
+We shall no longer access directly cryptographic primitives like RSA, EC or AES but use EVP which is an API in a higher level.
+In consequence the code below is not good :/
 
+Sources: 
+- https://github.com/pocoproject/poco/issues/3516
+- https://stackoverflow.com/questions/76212694/what-is-the-exact-alternative-to-using-aes-set-encrypt-key-in-openssl-3x
+*/
 
 // Fonction pour chiffrer une chaîne avec AES-256-CBC
 int chiffrer_aes(char *chaine_claire, char *clef, char *vecteur_initialisation, char *chaine_chiffree) {
