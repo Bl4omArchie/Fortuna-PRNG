@@ -11,8 +11,8 @@ My reference is the following book: [Cryptography Engineering Design Principles 
     - c.2: RET_ERR
 
 - Structures:
-    - s.1: Generate_State
-    - s.2: PRNG_State
+    - s.1: _generator_State
+    - s.2: _PRNG_state
 
 - Functions:
     - f.1: Fortuna
@@ -29,7 +29,7 @@ My reference is the following book: [Cryptography Engineering Design Principles 
     - f.3 Accumulator
         - f.3.1: initialize_prng 
         - f.3.2: int get_random_data
-        - f.3.3: add_event     
+        - f.3.3: add_event
 
 # Installation
 
@@ -42,3 +42,4 @@ sudo apt install libssl-dev
 # Sources
 
 - [Cryptography Engineering Design Principles and Practical Applications, Niels Ferguson, Bruce Schneier, Tadayoshi Kohno](https://www.schneier.com/wp-content/uploads/2015/12/fortuna.pdf)
+- [Encrypting/Decrypting a file using OpenSSL EVP](https://medium.com/@amitkulkarniencrypting-decrypting-a-file-using-openssl-evp-b26e0e4d28d4)

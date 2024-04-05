@@ -3,7 +3,7 @@
 
 
 
-int initialize_generator(Gstate state) {
+int initialize_generator(g_state state) {
     state.key = "";
     state.counter = "";
 
@@ -11,7 +11,7 @@ int initialize_generator(Gstate state) {
 }
 
 
-int seed(Gstate state, int seed) {
+int seed(g_state state, int seed) {
 
     return RET_OK;
 }
