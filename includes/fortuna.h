@@ -14,17 +14,17 @@
 // --------- structures ---------
 
 //s.1
-typedef struct Generate_State{
+typedef struct _generate_state{
     char *key;
     char *counter;
-} Gstate;
+} g_state;
 
 //s.2
-typedef struct PRNG_state {
+typedef struct _PRNG_state {
     int reseed_count;
     int P;
-    Gstate state;
-} Pstate;
+    g_state generator_state;
+} p_state;
 
 
 // --------- functions  ---------
@@ -35,15 +35,15 @@ int write_random_number(int bits, char filename);  // f1.2: write a random int o
 
 
 // f.2 Generator
-int initialize_generator(Gstate state);                   // f2.1
-int seed(Gstate state, int seed);                         // f2.2
+int initialize_generator(g_state *state);                   // f2.1
+int seed(g_state *state, int seed);                         // f2.2
 int iterate_counter();                                    // f2.3
-int generate_blocks(Gstate state, int k);                 // f2.4
-int generate_pseudo_random_data(Gstate state, int bits);  // f2.5
+int generate_blocks(g_state *state, int k);                 // f2.4
+int generate_pseudo_random_data(g_state *state, int bits);  // f2.5
 
 // f.3 Accumulator
-int initialize_prng(Pstate state);              // f3.1
-int get_random_data(Pstate state, int bits);    // f3.2
+int initialize_prng(p_state *state);              // f3.1
+int get_random_data(p_state *state, int bits);    // f3.2
 int add_event();                                // f3.3
 
 
