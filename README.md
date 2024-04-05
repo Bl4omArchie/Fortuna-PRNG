@@ -42,3 +42,4 @@ sudo apt install libssl-dev
 # Sources
 
 - [Cryptography Engineering Design Principles and Practical Applications, Niels Ferguson, Bruce Schneier, Tadayoshi Kohno](https://www.schneier.com/wp-content/uploads/2015/12/fortuna.pdf)
+- [Encrypting/Decrypting a file using OpenSSL EVP](https://medium.com/@amitkulkarniencrypting-decrypting-a-file-using-openssl-evp-b26e0e4d28d4)
