@@ -21,3 +21,8 @@ int update_block_mode(cipher_params_t *cipher_data, EVP_CIPHER *cipher_mode) {
     cipher_data->cipher_type = cipher_mode;
     return RET_OK;
 }
+
+int compute_sha256(char *input, size_t input_len, char *output) {
+
+    return RET_OK;
+}
