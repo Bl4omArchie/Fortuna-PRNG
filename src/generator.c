@@ -10,7 +10,12 @@ int initialize_generator(g_state *state) {
 }
 
 
-int seed(g_state *state, int seed) {
+int seed(g_state *state, char seed) {
+    char input[MAX_INPUT_LENGTH];
+    input = state->key | seed;
+
+    compute_sha256(input, strlen(input), state->key);
+    iterate_counter(state);
 
     return RET_OK;
 }

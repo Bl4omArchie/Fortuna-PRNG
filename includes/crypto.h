@@ -6,7 +6,7 @@
 #include <string.h>
 
 
-/* The crypto header is made for prototypes using openSSL library */
+// The crypto header is made for prototypes using openSSL library
 
 
 /*
@@ -22,8 +22,10 @@ Sources:
 
 // --------- constants ---------
 
-#define RET_OK 1    //c.1
-#define RET_ERR -1  //c.2
+#define RET_OK 1                //c.1
+#define RET_ERR -1              //c.2
+#define MAX_INPUT_LENGTH 1000   //c.3
+#define SHA256_DIGEST_LENGTH 32 //c.4
 
 
 // --------- structures  ---------

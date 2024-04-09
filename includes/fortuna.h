@@ -6,12 +6,15 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "crypto.h"
+
 
 // --------- constants ---------
 
 #define RET_OK 1                //c.1
 #define RET_ERR -1              //c.2
 #define COUNTER_BYTE_VALUE 16   //c.3
+#define MIN_POOL_SIZE 64        //c.4
 
 
 // --------- structures ---------
@@ -27,7 +30,7 @@ typedef struct _generate_state {
 
 
 //s.2
-typedef struct _PRNG_state {
+typedef struct _prng_state {
     int reseed_count;
     int P;
     g_state generator_state;
@@ -43,7 +46,7 @@ int write_random_number(int bits, char filename);  // f1.2: write a random int o
 
 // f.2 Generator
 int initialize_generator(g_state *state);                   // f2.1
-int seed(g_state *state, int seed);                         // f2.2
+int seed(g_state *state, char seed);                         // f2.2
 int iterate_counter(g_state *state);                        // f2.3
 int generate_blocks(g_state *state, int k);                 // f2.4
 int generate_pseudo_random_data(g_state *state, int bits);  // f2.5
