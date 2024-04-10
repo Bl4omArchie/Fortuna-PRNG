@@ -14,7 +14,6 @@
 #define RET_OK 1                //c.1
 #define RET_ERR -1              //c.2
 #define COUNTER_BYTE_VALUE 16   //c.3
-#define MIN_POOL_SIZE 64        //c.4
 
 
 // --------- structures ---------
@@ -26,6 +25,7 @@
 typedef struct _generate_state {
     char *key;
     uint8_t counter[16];
+    hash_params_t *hash_state;
 } g_state;
 
 

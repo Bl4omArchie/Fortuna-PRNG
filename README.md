@@ -5,19 +5,19 @@ My reference is the following book: [Cryptography Engineering Design Principles 
 
 # Listing
 
-## fortuna.h
 - Constants:
     ```
     - c.1: RET_OK
     - c.2: RET_ERR
     - c.3: COUNTER_BYTE_VALUE
-    - c.4: MIN_POOL_SIZE
     ```
 
 - Structures:
     ```
     - s.1: g_state
     - s.2: p_state
+    - s.3: cipher_params_t
+    - s.4: hash_params_t
     ```
     
 - Functions:
@@ -43,33 +43,17 @@ My reference is the following book: [Cryptography Engineering Design Principles 
         - f.3.3: add_event     
         ```
 
-## crypto.h
-- Constants:
-    ```
-    - c.1: RET_OK
-    - c.2: RET_ERR
-    - c.3: MAX_INPUT_LENGTH
-    - c.4: SHA256_DIGEST_LENGTH
-    ```
+    - f.4 Crypto
+        - f.4.1: AES
+            ```
+            - f.4.1.1 encrypt_aes
+            - f.1.4.2 decrypt_aes
+            - f.1.4.3 update_block_mode
+            ```
 
-- Structures:
-    ```
-    - s.1: cipher_params_t
-    ```
-    
-- Functions:
-    - f.1: aes:
-        ```
-        - f.1.1: encrypt_aes
-        - f.1.2: decrypt_aes
-        - f.1.3: update_block_mode
-        ```
+        - f.4.2: create_hash
 
 
-
-// f.2: sha256
-int compute_sha256(char *input, size_t input_len, char *output);
-        ```
 
 # Installation
 
@@ -82,4 +66,5 @@ sudo apt install libssl-dev
 # Sources
 
 - [Cryptography Engineering Design Principles and Practical Applications, Niels Ferguson, Bruce Schneier, Tadayoshi Kohno](https://www.schneier.com/wp-content/uploads/2015/12/fortuna.pdf)
-- [Encrypting/Decrypting a file using OpenSSL EVP](https://medium.com/@amit.kulkarni/encrypting-decrypting-a-file-using-openssl-evp-b26e0e4d28d4)
+- [Encrypting/Decrypting a file using OpenSSL EVP by Amit Kulkarni](https://medium.com/@amit.kulkarni/encrypting-decrypting-a-file-using-openssl-evp-b26e0e4d28d4)
+- [openSSL - EVP documentation](https://wiki.openssl.org/index.php/EVP)

@@ -23,10 +23,8 @@ Sources:
 
 // --------- constants ---------
 
-#define RET_OK 1                //c.1
-#define RET_ERR -1              //c.2
-#define MAX_INPUT_LENGTH 1000   //c.3
-#define SHA256_DIGEST_LENGTH 32 //c.4
+#define RET_OK 1    //c.1
+#define RET_ERR -1  //c.2
 
 
 // --------- structures  ---------
@@ -38,17 +36,21 @@ typedef struct _cipher_params_t{
     const EVP_CIPHER *cipher_type;
 } cipher_params_t;
 
+typedef struct _hash_params_t {
+    EVP_MD_CTX *md_ctx;
+    const EVP_MD *hash_function;
+} hash_params_t;
+
 
 // --------- functions ---------
 
-// f.1: AES
+// f.4.1: AES
 int encrypt_aes(cipher_params_t *cipher_data, char plaintext, char *ciphertext);
 int decrypt_aes(cipher_params_t *cipher_data, char ciphertext, char *plaintext);
 int update_block_mode(cipher_params_t *cipher_data, EVP_CIPHER *cipher_mode);
 
 
-// f.2: sha256
-int create_hash();
-int update_hash();
+// f.4.2: sha256
+int create_hash(hash_params_t *hash_data, const EVP_MD *hash);
 
 #endif

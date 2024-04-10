@@ -11,8 +11,12 @@ int initialize_generator(g_state *state) {
 
 
 int seed(g_state *state, char *seed) {
-    unsigned char hash[SHA256_DIGEST_LENGTH];
+    create_hash(state->hash_state, EVP_sha256());
 
+    EVP_DigestUpdate(state->hash_state->md_ctx, state->key, sizeof(state->key));
+    EVP_DigestUpdate(state->hash_state->md_ctx, seed, sizeof(seed));
+
+    iterate_counter(state);
 
     return RET_OK;
 }
@@ -32,7 +36,6 @@ int iterate_counter(g_state *state) {
         // check if we need a carry for the next round 
         carry = (sum > 0xFF - carry) ? 1 : 0;
     }
-
     return RET_OK;
 }
 
