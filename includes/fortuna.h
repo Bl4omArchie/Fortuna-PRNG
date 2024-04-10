@@ -46,7 +46,7 @@ int write_random_number(int bits, char filename);  // f1.2: write a random int o
 
 // f.2 Generator
 int initialize_generator(g_state *state);                   // f2.1
-int seed(g_state *state, char seed);                         // f2.2
+int seed(g_state *state, char *seed);                       // f2.2
 int iterate_counter(g_state *state);                        // f2.3
 int generate_blocks(g_state *state, int k);                 // f2.4
 int generate_pseudo_random_data(g_state *state, int bits);  // f2.5

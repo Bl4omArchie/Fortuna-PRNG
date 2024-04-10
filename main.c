@@ -20,7 +20,9 @@ int main() {
     }
     printf("\n");
     
-    iterate_counter(&generator);
+    for (int i=0; i<128; i++)
+        iterate_counter(&generator);
+    
     for (int i = 0; i < 16; i++) {
         printf("%02X ", generator.counter[i]);
     }
@@ -28,24 +30,19 @@ int main() {
 
 
 
-    // hash a string
-    char input[MAX_INPUT_LENGTH];
+    /* hash a string
+    char input[MAX_INPUT_LENGTH] = "test_string";
+    char seed[MAX_INPUT_LENGTH] = "superseed"
     unsigned char output[SHA256_DIGEST_LENGTH];
     int i;
 
-    printf("Enter the string to hash: ");
-    fgets(input, sizeof(input), stdin);
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    SHA256_CTX sha256;
+    SHA256_Init(&sha256);
+    SHA256_Update(&sha256, input, strlen(input));
+    SHA256_Update(&sha256, seed, strlen(seed));
 
-    // Remove trailing newline character
-    input[strcspn(input, "\n")] = '\0';
-
-    compute_sha256(input, strlen(input), output);
-
-    printf("SHA-256 hash of '%s' is: ", input);
-    for (i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-        printf("%02x", output[i]);
-    }
-    printf("\n");
-
+    SHA256_Final(input, &sha256);
+    */
     return 0;
 }

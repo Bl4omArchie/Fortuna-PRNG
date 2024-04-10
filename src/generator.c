@@ -10,28 +10,32 @@ int initialize_generator(g_state *state) {
 }
 
 
-int seed(g_state *state, char seed) {
-    char input[MAX_INPUT_LENGTH];
-    input = state->key | seed;
+int seed(g_state *state, char *seed) {
+    unsigned char hash[SHA256_DIGEST_LENGTH];
 
-    compute_sha256(input, strlen(input), state->key);
-    iterate_counter(state);
 
     return RET_OK;
 }
+
 
 int iterate_counter(g_state *state) {
     uint16_t sum;
     int carry = 1;
 
-    for (int i=0; i<COUNTER_BYTE_VALUE; i++) {
+    for (int i=0; i < COUNTER_BYTE_VALUE; i++) {
+        // store the addition in a 16 bit variable to avoid overflow
         sum = state->counter[i] + carry;
-        state->counter[i] = sum & 0xFF;
-        carry >>= 8;
+
+        // place the result in the counter with a 8 bit mask 
+        state->counter[i] = sum & 0xFF; 
+
+        // check if we need a carry for the next round 
+        carry = (sum > 0xFF - carry) ? 1 : 0;
     }
 
     return RET_OK;
 }
+
 
 int generate_blocks(g_state *state, int k) {
 

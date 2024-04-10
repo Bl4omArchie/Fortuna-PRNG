@@ -64,10 +64,6 @@ My reference is the following book: [Cryptography Engineering Design Principles 
         - f.1.2: decrypt_aes
         - f.1.3: update_block_mode
         ```
-    - f.2: sha256:
-        ```
-        - f.2.1: compute_sha256
-        ```
 
 
 

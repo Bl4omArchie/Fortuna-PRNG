@@ -2,6 +2,7 @@
 #define CRYPTO_H
 
 #include <openssl/aes.h>
+#include <openssl/sha.h>
 #include <openssl/evp.h>
 #include <string.h>
 
@@ -47,6 +48,7 @@ int update_block_mode(cipher_params_t *cipher_data, EVP_CIPHER *cipher_mode);
 
 
 // f.2: sha256
-int compute_sha256(char *input, size_t input_len, char *output);
+int create_hash();
+int update_hash();
 
 #endif
