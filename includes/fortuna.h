@@ -6,7 +6,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "crypto.h"
 
 
 // --------- constants ---------
@@ -25,7 +24,6 @@
 typedef struct _generate_state {
     char *key;
     uint8_t counter[16];
-    hash_params_t *hash_state;
 } g_state;
 
 

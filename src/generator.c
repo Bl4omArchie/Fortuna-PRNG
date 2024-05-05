@@ -1,4 +1,5 @@
 #include "fortuna.h"
+#include "crypto.h"
 
 
 
@@ -11,10 +12,15 @@ int initialize_generator(g_state *state) {
 
 
 int seed(g_state *state, char *seed) {
-    create_hash(state->hash_state, EVP_sha256());
+    EVP_MD_CTX *mdctx;
+    const EVP_MD *md;
 
-    EVP_DigestUpdate(state->hash_state->md_ctx, state->key, sizeof(state->key));
-    EVP_DigestUpdate(state->hash_state->md_ctx, seed, sizeof(seed));
+    mdctx = EVP_MD_CTX_new();
+    md = EVP_sha256();
+
+    EVP_DigestInit_ex(mdctx, md, NULL);
+    EVP_DigestUpdate(mdctx, state->key, sizeof(state->key));
+    EVP_DigestFinal_ex(mdctx, seed, sizeof(seed));
 
     iterate_counter(state);
 

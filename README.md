@@ -17,7 +17,6 @@ My reference is the following book: [Cryptography Engineering Design Principles 
     - s.1: g_state
     - s.2: p_state
     - s.3: cipher_params_t
-    - s.4: hash_params_t
     ```
     
 - Functions:
@@ -44,14 +43,11 @@ My reference is the following book: [Cryptography Engineering Design Principles 
         ```
 
     - f.4 Crypto
-        - f.4.1: AES
-            ```
-            - f.4.1.1 encrypt_aes
-            - f.1.4.2 decrypt_aes
-            - f.1.4.3 update_block_mode
-            ```
-
-        - f.4.2: create_hash
+        ```
+        - f.4.1 encrypt_aes
+        - f.4.2 decrypt_aes
+        - f.4.3 update_block_mode
+        ```
 
 
 

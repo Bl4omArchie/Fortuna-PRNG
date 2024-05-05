@@ -1,10 +1,10 @@
 #include "includes/fortuna.h"
+#include "includes/crypto.h"
 
 #include <stdio.h>
 
 
-
-int main() {
+int test_prng() {
     // Initialize the generator state
     g_state generator;
     initialize_generator(&generator);
@@ -27,22 +27,53 @@ int main() {
         printf("%02X ", generator.counter[i]);
     }
     printf("\n");
+}
 
 
+int test_hash() {
+    g_state generator;
+    char add_new_seed[SHA256_DIGEST_LENGTH];
+    initialize_generator(&generator);
+    
+    for (int i=0; i<128; i++)
+        iterate_counter(&generator);
 
-    /* hash a string
-    char input[MAX_INPUT_LENGTH] = "test_string";
-    char seed[MAX_INPUT_LENGTH] = "superseed"
-    unsigned char output[SHA256_DIGEST_LENGTH];
-    int i;
+    seed(&generator, add_new_seed);
+}
 
-    unsigned char hash[SHA256_DIGEST_LENGTH];
-    SHA256_CTX sha256;
-    SHA256_Init(&sha256);
-    SHA256_Update(&sha256, input, strlen(input));
-    SHA256_Update(&sha256, seed, strlen(seed));
 
-    SHA256_Final(input, &sha256);
+int test_aes() {
+    /*
+    g_state generator;
+    
+    initialize_generator(&generator);
+    
+    for (int i=0; i<128; i++)
+        iterate_counter(&generator);
+
+    cipher_params_t = {.key = generator->key, .cipher_type=EVP_aes_256_cbc()}
+
+
+    unsigned char *plaintext = (unsigned char *)generator->counter;
+
+    unsigned char *ciphertext[128];
+    int *ciphertext_len;
+
     */
+
+    /* Encrypt the plaintext 
+    ciphertext_len = encrypt_aes (plaintext, strlen ((char *)plaintext), key, ciphertext, ciphertext_len); */
+
+    /* Do something useful with the ciphertext here
+    printf("Ciphertext is:\n"); */
+    
+}
+
+
+int main() {
+    test_prng();
+    test_hash();
+
+
     return 0;
 }
